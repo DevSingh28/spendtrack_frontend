@@ -92,8 +92,7 @@ const DashboardHome = () => {
         categories.map(async (category) => {
           try {
             const response = await axios.get(
-              `https://spendtrack-backend-node.onrender.com/budget/check-alert?category=${category}&month=${currentMonth}`,
-              { headers: { Authorization: `Bearer ${token}` } }
+              `https://spendtrack-backend-node.onrender.com/budget/check-alert?category=${category}&month=${currentMonth}`
             );
 
             return {

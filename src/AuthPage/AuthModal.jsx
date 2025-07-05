@@ -101,8 +101,6 @@ const AuthModal = ({ isOpen, onClose }) => {
 
   return (
     <>
-      <Toaster position="top-right" />
-
       <AnimatePresence>
         {isOpen && (
           <motion.div

@@ -6,21 +6,11 @@ import Footer from "../FooterPage/Footer";
 import AuthModal from "../../AuthPage/AuthModal";
 import toast, { Toaster } from "react-hot-toast";
 
-const Home = ({ connecting }) => {
+const Home = () => {
   const [openModal, setOpenModal] = useState(false);
-  useEffect(() => {
-    if (connecting) {
-      toast.loading("Connecting to backend...", {
-        id: "home-connection",
-      });
-    } else {
-      toast.dismiss("home-connection");
-    }
-  }, [connecting]);
 
   return (
     <div className="relative min-h-screen bg-gray-100 text-black overflow-hidden">
-      <Toaster position="top-right" />
       <div className="absolute -top-20 -left-32 w-[500px] h-[500px]  bg-gradient-to-br from-teal-50 to-teal-100 rounded-full opacity-40 animate-blob pointer-events-none hidden md:block"></div>
       <div className="absolute top-1/2 -right-40 w-[600px] h-[600px] bg-gradient-to-tr from-indigo-200 to-indigo-300 rounded-full opacity-30 animate-blob animation-delay-2000 pointer-events-none"></div>
       <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-gradient-to-l from-pink-200 to-pink-300 rounded-full opacity-35 animate-blob animation-delay-4000 pointer-events-none"></div>

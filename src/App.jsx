@@ -14,7 +14,7 @@ import DashboardHome from "./components/DashboardPage/DashboardHome";
 import ExpensesPage from "./components/DashboardPage/ExpensePage";
 import ReportsPage from "./components/DashboardPage/ReportPage";
 import HelpCenterPage from "./components/DashboardPage/HelpCenterPage";
-
+import toast, { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./middleware/user.authstore";
 
 const ProtectedRoute = ({ element }) => {
@@ -36,6 +36,7 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
+        toast.loading("Connecting to backend...", { id: "global-connection" });
         const res = await axios.post(
           "https://spendtrack-backend-node.onrender.com/api/me",
           {
@@ -50,6 +51,7 @@ const App = () => {
         console.log("Not authenticated");
       } finally {
         setConnecting(false);
+        toast.dismiss("global-connection");
       }
     };
 
@@ -59,15 +61,12 @@ const App = () => {
   return (
     <div className="min-h-screen">
       <BrowserRouter>
+        <Toaster position="top-right" />
         <Routes>
           <Route
             path="/"
             element={
-              isAuthenticated ? (
-                <Navigate to="/dashboard" replace />
-              ) : (
-                <Home connecting={connecting} />
-              )
+              isAuthenticated ? <Navigate to="/dashboard" replace /> : <Home />
             }
           />
           <Route

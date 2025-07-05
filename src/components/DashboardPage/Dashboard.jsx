@@ -91,7 +91,6 @@ const Dashboard = () => {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      <Toaster position="top-right" />
       <AnimatePresence mode="wait">
         {!isLargeScreen && isSidebarOpen && (
           <motion.div
