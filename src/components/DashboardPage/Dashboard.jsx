@@ -39,9 +39,12 @@ const Dashboard = () => {
 
   const handlelogoutclick = async () => {
     try {
-      const res = await axios.post("http://localhost:5001/api/logout", {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        "https://spendtrack-backend-node.onrender.com/api/logout",
+        {
+          withCredentials: true,
+        }
+      );
       clearUser();
 
       if (res.status == 200) {

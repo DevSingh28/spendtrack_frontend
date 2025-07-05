@@ -129,9 +129,12 @@ const ExpensePage = () => {
         ...(searchQuery && { search: searchQuery }),
       };
 
-      const response = await axios.get("http://localhost:5001/exp", {
-        params,
-      });
+      const response = await axios.get(
+        "https://spendtrack-backend-node.onrender.com/exp",
+        {
+          params,
+        }
+      );
       setExpenses(response.data.data);
       calculateTotals(response.data.data);
       console.log(response);
@@ -164,7 +167,9 @@ const ExpensePage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5001/exp/${selectedExpense._id}`);
+      await axios.delete(
+        `https://spendtrack-backend-node.onrender.com/exp/${selectedExpense._id}`
+      );
       setShowDeleteModal(false);
       fetchExpenses();
     } catch (error) {
@@ -186,9 +191,15 @@ const ExpensePage = () => {
       e.preventDefault();
       try {
         if (expense) {
-          await axios.put(`http://localhost:5001/exp/${expense._id}`, formData);
+          await axios.put(
+            `https://spendtrack-backend-node.onrender.com/exp/${expense._id}`,
+            formData
+          );
         } else {
-          await axios.post("http://localhost:5001/exp", formData);
+          await axios.post(
+            "https://spendtrack-backend-node.onrender.com/exp",
+            formData
+          );
         }
         onClose();
         fetchExpenses();

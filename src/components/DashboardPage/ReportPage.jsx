@@ -143,7 +143,7 @@ const ReportPage = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "http://localhost:5001/report/generate",
+        "https://spendtrack-backend-node.onrender.com/report/generate",
         {
           params: { months },
         }
@@ -159,7 +159,9 @@ const ReportPage = () => {
 
   const fetchCategoryTotals = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/report/total");
+      const response = await axios.get(
+        "https://spendtrack-backend-node.onrender.com/report/total"
+      );
       setCategoryTotals(response.data.data);
       console.log("Total cat. data: ", response.data.data);
     } catch (error) {

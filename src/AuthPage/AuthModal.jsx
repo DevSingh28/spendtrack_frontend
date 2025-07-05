@@ -42,10 +42,13 @@ const AuthModal = ({ isOpen, onClose }) => {
   const handleLogin = async () => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5001/api/login", {
-        email: formData.email,
-        password: formData.password,
-      });
+      const res = await axios.post(
+        "https://spendtrack-backend-node.onrender.com/api/login",
+        {
+          email: formData.email,
+          password: formData.password,
+        }
+      );
 
       if (res.status == 200) {
         toast.success("Login successful");
@@ -68,7 +71,7 @@ const AuthModal = ({ isOpen, onClose }) => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:5001/api/register",
+        "https://spendtrack-backend-node.onrender.com/api/register",
         formData
       );
 

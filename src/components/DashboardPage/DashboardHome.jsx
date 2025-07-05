@@ -69,7 +69,7 @@ const DashboardHome = () => {
     const fetchData = async () => {
       try {
         const reportResponse = await axios.get(
-          "http://localhost:5001/report/generate",
+          "https://spendtrack-backend-node.onrender.com/report/generate",
           { params: { months: 1 } }
         );
         setReportData(reportResponse.data.data);
@@ -92,7 +92,7 @@ const DashboardHome = () => {
         categories.map(async (category) => {
           try {
             const response = await axios.get(
-              `http://localhost:5001/budget/check-alert?category=${category}&month=${currentMonth}`,
+              `https://spendtrack-backend-node.onrender.com/budget/check-alert?category=${category}&month=${currentMonth}`,
               { headers: { Authorization: `Bearer ${token}` } }
             );
 
@@ -142,13 +142,13 @@ const DashboardHome = () => {
   const handleSaveBudget = async () => {
     const token = localStorage.getItem("token");
     try {
-      await axios.post("http://localhost:5001/budget/", {
+      await axios.post("https://spendtrack-backend-node.onrender.com/budget/", {
         category: selectedCategory,
         monthlyLimit,
       });
       setIsModalOpen(false);
       const reportResponse = await axios.get(
-        "http://localhost:5001/report/generate",
+        "https://spendtrack-backend-node.onrender.com/report/generate",
         { params: { months: 1 } }
       );
       setReportData(reportResponse.data.data);
